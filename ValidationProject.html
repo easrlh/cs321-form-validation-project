@@ -152,6 +152,7 @@ By: Tabitha Miles, Danielle Alexandre, and Eva Lynch
       <input type="radio" id="mobile3" name="type3" value="mobile3">Mobile Phone<br>
       <br>
 
+      <button type="button" name="mobileCheck" onclick="welcome()">Click for a phone call</button>
     </fieldset>
     <br>
 
@@ -241,5 +242,49 @@ By: Tabitha Miles, Danielle Alexandre, and Eva Lynch
 
   today = yyyy + '-' + mm + '-' + dd;
   document.getElementById("birthDate").setAttribute("max", today);
+
+  function welcome() {
+    var fname = document.getElementById("fname");
+    var message = `Welcome ${fname.value}! Please enter your mobile number to receive a phone call:`
+    result = window.prompt(message, "###-###-####");
+    verifyPhone(result);
+  }
+
+  function verifyPhone(phone) {
+
+    var group1 = document.getElementById('mobile1');
+    var group2 = document.getElementById('mobile2');
+    var group3 = document.getElementById('mobile3');
+
+    if (group1.checked) {
+      if (document.getElementById('num1').value == phone) {
+        alert("Thank you! You will receive your phone call shortly.");
+      } else {
+        alert("You have not entered the mobile number we have on file. Please re-enter.");
+        // if cancel the close
+        //else
+        welcome();
+      }
+    }
+
+    if (group2.checked) {
+      if (document.getElementById('num2').value == phone) {
+        alert("Thank you! You will receive your phone call shortly.");
+      } else {
+        alert("You have not entered the mobile number we have on file. Please re-enter.");
+        welcome();
+      }
+    }
+
+      if (group3.checked) {
+        if (document.getElementById('num3').value == phone) {
+          alert("Thank you! You will receive your phone call shortly.");
+        } else {
+          alert("You have not entered the mobile number we have on file. Please re-enter.");
+          welcome();
+        }
+      }
+    }
+
 </script>
 </html>
